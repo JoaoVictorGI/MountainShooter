@@ -1,0 +1,4 @@
+select = ["E", "W", "F"]
+
+[lint.flake8-builtins]
+strict-checking = true
