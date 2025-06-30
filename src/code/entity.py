@@ -4,7 +4,7 @@ import pygame.image
 
 
 class Entity(ABC):
-    def __init__(self, name: str, position: tuple[int, int]):
+    def __init__(self, name: str, position: tuple[int, int | float]):
         self.name = name
         self.surface = pygame.image.load(
             "./src/assets/" + name + ".png"
