@@ -3,6 +3,7 @@ import sys
 from code.const import COLOR_WHITE, EVENT_ENEMY, MENU_OPTIONS, SPAWN_TIME, WIN_HEIGHT
 from code.entity import Entity
 from code.entityFactory import EntityFactory
+from code.entityMediator import EntityMediator
 from typing import Iterable, cast
 
 import pygame
@@ -61,6 +62,9 @@ class Level:
                 (10, WIN_HEIGHT - 20),
             )
             pygame.display.flip()
+
+            EntityMediator.verify_collision(self.entity_list)
+            EntityMediator.verify_health(self.entity_list)
         pass
 
     def level_text(
