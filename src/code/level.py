@@ -1,9 +1,11 @@
 import random
 import sys
 from code.const import COLOR_WHITE, EVENT_ENEMY, MENU_OPTIONS, SPAWN_TIME, WIN_HEIGHT
+from code.enemy import Enemy
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 from code.entityMediator import EntityMediator
+from code.player import Player
 from typing import Iterable, cast
 
 import pygame
@@ -36,6 +38,10 @@ class Level:
                 clock.tick(60)
                 self.window.blit(source=entity.surface, dest=entity.rect)
                 entity.move()
+                if isinstance(entity, (Player, Enemy)):
+                    shoot = entity.shoot()
+                    if shoot is not None:
+                        self.entity_list.append(shoot)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
