@@ -1,5 +1,5 @@
 from builtins import len
-from code.const import COLOR_ORANGE, COLOR_WHITE, COLOR_YELLOW, MENU_OPTIONS, WIN_WIDTH
+from code.const import C_ORANGE, C_WHITE, C_YELLOW, MENU_OPTIONS, WIN_WIDTH
 
 import pygame
 from pygame.font import Font
@@ -22,22 +22,22 @@ class Menu:
 
         while True:
             self.window.blit(source=self.surface, dest=self.rect)
-            self.menu_text(50, "Mountain", COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
-            self.menu_text(50, "Shooter", COLOR_ORANGE, ((WIN_WIDTH / 2), 120))
+            self.menu_text(50, "Mountain", C_ORANGE, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "Shooter", C_ORANGE, ((WIN_WIDTH / 2), 120))
 
             for i in range(len(MENU_OPTIONS)):
                 if i == menu_option:
                     self.menu_text(
                         20,
                         MENU_OPTIONS[i],
-                        COLOR_YELLOW,
+                        C_YELLOW,
                         ((WIN_WIDTH / 2), 200 + 25 * i),
                     )
                 else:
                     self.menu_text(
                         20,
                         MENU_OPTIONS[i],
-                        COLOR_WHITE,
+                        C_WHITE,
                         ((WIN_WIDTH / 2), 200 + 25 * i),
                     )
 
