@@ -45,3 +45,7 @@ class Player(Entity):
                 return PlayerShot(
                     f"{self.name}Shot", (self.rect.centerx, self.rect.centery)
                 )
+            else:
+                return None
+        else:
+            return None

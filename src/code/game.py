@@ -1,3 +1,4 @@
+import sys
 from code.const import MENU_OPTIONS, WIN_HEIGHT, WIN_WIDTH
 from code.level import Level
 from code.menu import Menu
@@ -35,4 +36,5 @@ class Game:
                 pygame.quit()
                 quit()
             else:
-                pass
+                pygame.quit()
+                sys.exit()
