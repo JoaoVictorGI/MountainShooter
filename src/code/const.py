@@ -9,6 +9,9 @@ C_CYAN: tuple[int, int, int] = (0, 128, 128)
 
 # E
 EVENT_ENEMY: int = pygame.USEREVENT + 1
+
+EVENT_TIMEOUT: int = pygame.USEREVENT + 2
+
 ENTITY_SPEED: dict[str, int] = {
     "Level1Bg0": 0,
     "Level1Bg1": 1,
@@ -17,6 +20,11 @@ ENTITY_SPEED: dict[str, int] = {
     "Level1Bg4": 4,
     "Level1Bg5": 5,
     "Level1Bg6": 6,
+    "Level2Bg0": 0,
+    "Level2Bg1": 1,
+    "Level2Bg2": 2,
+    "Level2Bg3": 3,
+    "Level2Bg4": 4,
     "Player1": 3,
     "Player2": 3,
     "Enemy1": 1,
@@ -28,13 +36,18 @@ ENTITY_SPEED: dict[str, int] = {
 }
 
 ENTITY_HEALTH: dict[str, int] = {
-    "Level1Bg0": 999,
-    "Level1Bg1": 999,
-    "Level1Bg2": 999,
-    "Level1Bg3": 999,
-    "Level1Bg4": 999,
-    "Level1Bg5": 999,
-    "Level1Bg6": 999,
+    "Level1Bg0": 99999,
+    "Level1Bg1": 99999,
+    "Level1Bg2": 99999,
+    "Level1Bg3": 99999,
+    "Level1Bg4": 99999,
+    "Level1Bg5": 99999,
+    "Level1Bg6": 99999,
+    "Level2Bg0": 99999,
+    "Level2Bg1": 99999,
+    "Level2Bg2": 99999,
+    "Level2Bg3": 99999,
+    "Level2Bg4": 99999,
     "Player1": 300,
     "Player2": 300,
     "Enemy1": 50,
@@ -60,11 +73,11 @@ ENTITY_DAMAGE: dict[str, int] = {
     "Level1Bg4": 0,
     "Level1Bg5": 0,
     "Level1Bg6": 0,
-    # "Level2Bg0": 0,
-    # "Level2Bg1": 0,
-    # "Level2Bg2": 0,
-    # "Level2Bg3": 0,
-    # "Level2Bg4": 0,
+    "Level2Bg0": 0,
+    "Level2Bg1": 0,
+    "Level2Bg2": 0,
+    "Level2Bg3": 0,
+    "Level2Bg4": 0,
     "Player1": 1,
     "Player2": 1,
     "Enemy1": 1,
@@ -83,11 +96,11 @@ ENTITY_SCORE = {
     "Level1Bg4": 0,
     "Level1Bg5": 0,
     "Level1Bg6": 0,
-    # "Level2Bg0": 0,
-    # "Level2Bg1": 0,
-    # "Level2Bg2": 0,
-    # "Level2Bg3": 0,
-    # "Level2Bg4": 0,
+    "Level2Bg0": 0,
+    "Level2Bg1": 0,
+    "Level2Bg2": 0,
+    "Level2Bg3": 0,
+    "Level2Bg4": 0,
     "Player1": 0,
     "Player2": 0,
     "Enemy1": 100,
@@ -97,6 +110,7 @@ ENTITY_SCORE = {
     "Enemy1Shot": 0,
     "Enemy2Shot": 0,
 }
+
 
 # M
 MENU_OPTIONS: tuple[str, ...] = (
@@ -118,7 +132,11 @@ PLAYER_KEY_SHOOT: dict[str, int] = {
 }
 
 # S
-SPAWN_TIME = 4000
+SPAWN_TIME: int = 4000
+
+# T
+TIMEOUT_STEP: int = 100
+TIMEOUT_LEVEL: int = 20000
 
 # W
 WIN_WIDTH: int = 576

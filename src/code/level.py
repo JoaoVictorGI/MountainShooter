@@ -5,8 +5,11 @@ from code.const import (
     C_GREEN,
     C_WHITE,
     EVENT_ENEMY,
+    EVENT_TIMEOUT,
     MENU_OPTIONS,
     SPAWN_TIME,
+    TIMEOUT_LEVEL,
+    TIMEOUT_STEP,
     WIN_HEIGHT,
 )
 from code.enemy import Enemy
@@ -23,21 +26,29 @@ from pygame.time import Clock
 
 
 class Level:
-    def __init__(self, window: Surface, name: str, game_mode: str | None) -> None:
-        self.timeout = 20000
+    def __init__(
+        self, window: Surface, name: str, game_mode: str | None, player_score: list[int]
+    ) -> None:
+        self.timeout = TIMEOUT_LEVEL
         self.window = window
         self.name = name
         self.game_mode = game_mode
-        self.entity_list: list[Entity] = []
+        self.entity_list = []
         self.entity_list.extend(
-            cast(Iterable[Entity], EntityFactory.get_entity("Level1Bg"))
+            cast(Iterable[Entity], EntityFactory.get_entity(f"{self.name}Bg"))
         )
+        player = EntityFactory.get_entity("Player1")
+        player.score = player_score[0]
+        self.entity_list.append(player)
         self.entity_list.append(cast(Entity, EntityFactory.get_entity("Player1")))
         if game_mode in [MENU_OPTIONS[1], MENU_OPTIONS[2]]:
+            player = EntityFactory.get_entity("Player2")
+            player.score = player_score[1]
             self.entity_list.append(cast(Entity, EntityFactory.get_entity("Player2")))
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
+        pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
-    def run(self):
+    def run(self) -> bool | None:
         pygame.mixer_music.load(f"./src/assets/{self.name}.mp3")
         pygame.mixer_music.play(-1)
         while True:
@@ -73,6 +84,23 @@ class Level:
                     self.entity_list.append(
                         cast(Entity, EntityFactory.get_entity(choice))
                     )
+                if event.type == EVENT_TIMEOUT:
+                    self.timeout -= TIMEOUT_STEP
+                    if self.timeout == 0:
+                        for entity in self.entity_list:
+                            if isinstance(entity, Player) and entity.name == "Player1":
+                                player_score[0] = entity.score
+                            if isinstance(entity, Player) and entity.name == "Player2":
+                                player_score[1] = entity.score
+                        return True
+
+                found_player = False
+                for entity in self.entity_list:
+                    if isinstance(entity, Player):
+                        found_player = True
+
+                if not found_player:
+                    return False
 
             self.level_text(
                 14,
