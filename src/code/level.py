@@ -48,7 +48,7 @@ class Level:
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
-    def run(self) -> bool | None:
+    def run(self, player_score: list[int]) -> bool | None:
         pygame.mixer_music.load(f"./src/assets/{self.name}.mp3")
         pygame.mixer_music.play(-1)
         while True:
