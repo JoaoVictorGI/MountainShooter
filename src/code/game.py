@@ -13,7 +13,7 @@ class Game:
         pygame.init()
         self.window: Surface = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
 
-    def run(self, player_score: list[int]) -> None:
+    def run(self) -> None:
         while True:
             score: Score = Score(self.window)
             menu: Menu = Menu(self.window)
@@ -29,7 +29,7 @@ class Game:
                     )
                     level_return = level.run(player_score)
                     if level_return:
-                        score.save(menu_return=menu_return, player_score=player_score)
+                        score.save(game_mode=menu_return, player_score=player_score)
             elif menu_return == MENU_OPTIONS[3]:
                 score.show()
             elif menu_return == MENU_OPTIONS[4]:

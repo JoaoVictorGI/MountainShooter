@@ -51,10 +51,10 @@ class Level:
     def run(self, player_score: list[int]) -> bool | None:
         pygame.mixer_music.load(f"./src/assets/{self.name}.mp3")
         pygame.mixer_music.play(-1)
+        clock: Clock = pygame.time.Clock()
         while True:
-            clock: Clock = pygame.time.Clock()
+            clock.tick(60)
             for entity in self.entity_list:
-                clock.tick(60)
                 self.window.blit(source=entity.surface, dest=entity.rect)
                 entity.move()
                 if isinstance(entity, (Player, Enemy)):
