@@ -1,3 +1,5 @@
+from typing import Literal
+
 import pygame
 
 # C
@@ -6,6 +8,7 @@ C_WHITE: tuple[int, int, int] = (255, 255, 255)
 C_YELLOW: tuple[int, int, int] = (255, 255, 0)
 C_GREEN: tuple[int, int, int] = (0, 128, 0)
 C_CYAN: tuple[int, int, int] = (0, 128, 128)
+C_RED: tuple[int, int, int] = (139, 0, 0)
 
 # E
 EVENT_ENEMY: int = pygame.USEREVENT + 1
@@ -111,6 +114,12 @@ ENTITY_SCORE = {
     "Enemy2Shot": 0,
 }
 
+# G
+GAME_OVER_OPTIONS: tuple[Literal["MENU"], Literal["EXIT"]] = (
+    "MENU",
+    "EXIT",
+)
+
 
 # M
 MENU_OPTIONS: tuple[str, ...] = (
@@ -132,7 +141,7 @@ PLAYER_KEY_SHOOT: dict[str, int] = {
 }
 
 # S
-SPAWN_TIME: int = 4000
+SPAWN_TIME: int = 2500
 
 # T
 TIMEOUT_STEP: int = 100
