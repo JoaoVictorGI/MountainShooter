@@ -2,7 +2,7 @@
 
 ### About
 
-Mountain Shooter is a 2D arcade shooting up game developed with Pygame. The game has 2 levels and each level end with a score.
+Mountain Shooter is a 2D arcade shooting up game developed with Pygame. The game has 2 levels.
 Can be played coop (2 players).
 Score is saved in a database (SQLite3)
 
